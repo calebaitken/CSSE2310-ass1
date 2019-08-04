@@ -3,6 +3,8 @@
 //
 
 #include <ctype.h>
+#include <unistd.h>
+
 #include "bark.h"
 
 /**
@@ -34,22 +36,24 @@ int main(int argc, char** argv) {
 
     // handle arg values
     if (argc == 4) {
-        loadGame(argv[1], argv[2], argv[3]);
+        loadGame(*argv[1], *argv[2], *argv[3]);
     } else if (argc == 6) {
-        if (isalpha(argv[2]) || isalpha(argv[3])) {
+        if (!(isdigit(*argv[2]) && isdigit(*argv[3]))) {
             // width or height are not numbers
             return 1;
         }
-        newGame(argv[1], (int)argv[2], (int)argv[3], argv[4], argv[5]);
+        newGame(*argv[1], (int)*argv[2], (int)*argv[3], *argv[4], *argv[5]);
     }
 
     return 0;
 }
 
-int loadGame(char* deckfile, char* p1type, char* p2type) {
+int loadGame(char deckfile, char p1type, char p2type) {
+    char cwd[PATH_MAX];
+    gamefile = fopen(getcwd(cwd, sizeof(cwd)) + deckfile, "r+");
     return 0;
 }
 
-int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
+int newGame(char deckfile, int width, int height, char p1type, char p2type) {
     return 0;
 }
