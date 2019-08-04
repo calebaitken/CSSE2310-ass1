@@ -2,6 +2,7 @@
 // Created by caleb on 2019-08-01.
 //
 
+#include <ctype.h>
 #include "bark.h"
 
 /**
@@ -33,18 +34,22 @@ int main(int argc, char** argv) {
 
     // handle arg values
     if (argc == 4) {
-        savefile = argv[1];
-        p1type = argv[2];
-        p2type = agrv[3];
+        loadGame(argv[1], argv[2], argv[3]);
     } else if (argc == 6) {
-        deckfile = argv[1];
-        width = argv[2];
-        height = argv[3];
-        p1type = argv[4];
-        p2type = argv[5];
+        if (isalpha(argv[2]) || isalpha(argv[3])) {
+            // width or height are not numbers
+            return 1;
+        }
+        newGame(argv[1], (int)argv[2], (int)argv[3], argv[4], argv[5]);
     }
 
     return 0;
 }
 
-int init()
+int loadGame(char* deckfile, char* p1type, char* p2type) {
+    return 0;
+}
+
+int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
+    return 0;
+}
