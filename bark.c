@@ -49,8 +49,8 @@ int main(int argc, char** argv) {
 }
 
 int loadGame(char deckfile, char p1type, char p2type) {
-    char cwd[PATH_MAX];
-    gamefile = fopen(getcwd(cwd, sizeof(cwd)) + deckfile, "r+");
+    // char cwd[PATH_MAX];
+    // gamefile = fopen(getcwd(cwd, sizeof(cwd)) + deckfile, "r+");
     return 0;
 }
 
