@@ -11,7 +11,7 @@ FILE* gamefile;
 
 int main(int argc, char** argv);
 
-FILE loadGame(char deckfile, char p1type, char p2type);
-int newGame(char deckfile, int width, int height, char p1type, char p2type);
+int loadGame(char* deckfile, char* p1type, char* p2type);
+int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 
 #endif //ASS1_BARK_H

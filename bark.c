@@ -3,10 +3,11 @@
 //
 
 #include <ctype.h>
-//#include <unistd.h>
-//#include <linux/limits.h>
+#include <unistd.h>
 
 #include "bark.h"
+
+char cwd[256];
 
 /**
  * Function: main
@@ -26,7 +27,7 @@ int main(int argc, char** argv) {
     // verify arg count
     if (argc == 1) {
         //function for printing help dialog
-        return 0;
+        return 1;
     } else if (argc > 6) {
         //too many arguments given
         return 1;
@@ -37,23 +38,32 @@ int main(int argc, char** argv) {
 
     // handle arg values
     if (argc == 4) {
-        loadGame(*argv[1], *argv[2], *argv[3]);
+        loadGame(argv[1], argv[2], argv[3]);
     } else if (argc == 6) {
         if (!(isdigit(*argv[2]) && isdigit(*argv[3]))) {
             // width or height are not numbers
-            return 1;
+            return 2;
         }
-        newGame(*argv[1], (int)*argv[2], (int)*argv[3], *argv[4], *argv[5]);
+        newGame(argv[1], (int)*argv[2], (int)*argv[3], argv[4], argv[5]);
     }
 
+    if (gamefile == fopen(*getcwd(cwd, sizeof(cwd)) + *argv[1], "r+")) {
+        return 100;
+    }
     return 0;
 }
 
-FILE loadGame(char deckfile, char p1type, char p2type) {
+int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
-    return *gamefile;
+    if (gamefile == NULL) {
+        gamefile = fopen(*getcwd(cwd, sizeof(cwd)) + *deckfile, "r+");
+        if (gamefile == NULL) {
+            return 100;
+        }
+    }
+    return 0;
 }
 
-int newGame(char deckfile, int width, int height, char p1type, char p2type) {
+int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     return 0;
 }
