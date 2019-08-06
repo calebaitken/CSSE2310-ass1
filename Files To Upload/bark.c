@@ -3,7 +3,8 @@
 //
 
 #include <ctype.h>
-#include <unistd.h>
+//#include <unistd.h>
+//#include <linux/limits.h>
 
 #include "bark.h"
 
@@ -48,10 +49,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-int loadGame(char deckfile, char p1type, char p2type) {
-    char cwd[PATH_MAX];
-    gamefile = fopen(getcwd(cwd, sizeof(cwd)) + deckfile, "r+");
-    return 0;
+FILE loadGame(char deckfile, char p1type, char p2type) {
+    gamefile = fopen(deckfile, "r+");
+    return *gamefile;
 }
 
 int newGame(char deckfile, int width, int height, char p1type, char p2type) {
