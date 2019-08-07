@@ -9,6 +9,8 @@
 
 FILE* gamefile;
 
+char cwd[256];
+
 int main(int argc, char** argv);
 
 int loadGame(char* deckfile, char* p1type, char* p2type);

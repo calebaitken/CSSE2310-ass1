@@ -4,15 +4,14 @@
 
 #include <ctype.h>
 #include <unistd.h>
+#include <string.h>
 
 #include "bark.h"
 
-char cwd[256];
-
-/**
+/*
  * Function: main
  * --------------
- * Main function of program
+ * TODO: Main function of program
  *      - verify number of args
  *      - verify types of args
  *      - verify I/O w/ deckfile
@@ -47,16 +46,23 @@ int main(int argc, char** argv) {
         newGame(argv[1], (int)*argv[2], (int)*argv[3], argv[4], argv[5]);
     }
 
-    if (gamefile == fopen(*getcwd(cwd, sizeof(cwd)) + *argv[1], "r+")) {
-        return 100;
-    }
     return 0;
 }
 
+/*
+ * CAN ONLY OPEN FILES IN MOSS IF GIVEN ABSOLUTE PATH, OR IS IN THE SAME DIRECTORY AS
+ * EXECUTABLE FILE.
+ *
+ * TODO: needs cleaner solution
+ */
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
-        gamefile = fopen(*getcwd(cwd, sizeof(cwd)) + *deckfile, "r+");
+        int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen(deckfile) + 1);
+        char strbuf[buffersize];
+        strcpy(strbuf, getcwd(cwd, sizeof(cwd)));
+        strcat(strbuf, deckfile);
+        gamefile = fopen(strbuf, "r+");
         if (gamefile == NULL) {
             return 100;
         }
@@ -64,6 +70,10 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     return 0;
 }
 
+/*
+ *
+ * TODO: create .deck file
+ */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     return 0;
 }

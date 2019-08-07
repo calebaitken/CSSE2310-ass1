@@ -35,19 +35,19 @@ NULL=nul
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2019.1.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E remove -f
+RM = "C:\Program Files\JetBrains\CLion 2019.1.3\bin\cmake\win\bin\cmake.exe" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "F:\Project Files\CSSE2310\ass1"
+CMAKE_SOURCE_DIR = "C:\Users\Caleb\Desktop\CSSE2310 ass1"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "F:\Project Files\CSSE2310\ass1\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles\bark.dir\depend.make
@@ -60,21 +60,21 @@ include CMakeFiles\bark.dir\flags.make
 
 CMakeFiles\bark.dir\bark.c.obj: CMakeFiles\bark.dir\flags.make
 CMakeFiles\bark.dir\bark.c.obj: ..\bark.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="F:\Project Files\CSSE2310\ass1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bark.dir/bark.c.obj"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\bark.dir\bark.c.obj /FdCMakeFiles\bark.dir\ /FS -c "F:\Project Files\CSSE2310\ass1\bark.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/bark.dir/bark.c.obj"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoCMakeFiles\bark.dir\bark.c.obj /FdCMakeFiles\bark.dir\ /FS -c "C:\Users\Caleb\Desktop\CSSE2310 ass1\bark.c"
 <<
 
 CMakeFiles\bark.dir\bark.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/bark.dir/bark.c.i"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\bark.dir\bark.c.i @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "F:\Project Files\CSSE2310\ass1\bark.c"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\bark.dir\bark.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Caleb\Desktop\CSSE2310 ass1\bark.c"
 <<
 
 CMakeFiles\bark.dir\bark.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/bark.dir/bark.c.s"
-	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\bark.dir\bark.c.s /c "F:\Project Files\CSSE2310\ass1\bark.c"
+	C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\bark.dir\bark.c.s /c "C:\Users\Caleb\Desktop\CSSE2310 ass1\bark.c"
 <<
 
 # Object files for target bark
@@ -87,9 +87,9 @@ bark_EXTERNAL_OBJECTS =
 bark.exe: CMakeFiles\bark.dir\bark.c.obj
 bark.exe: CMakeFiles\bark.dir\build.make
 bark.exe: CMakeFiles\bark.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="F:\Project Files\CSSE2310\ass1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable bark.exe"
-	"C:\Program Files\JetBrains\CLion 2019.1.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\bark.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\bark.dir\objects1.rsp @<<
- /out:bark.exe /implib:bark.lib /pdb:"F:\Project Files\CSSE2310\ass1\cmake-build-debug\bark.pdb" /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable bark.exe"
+	"C:\Program Files\JetBrains\CLion 2019.1.3\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\bark.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100177~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MIB055~1\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\bark.dir\objects1.rsp @<<
+ /out:bark.exe /implib:bark.lib /pdb:"C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug\bark.pdb" /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -102,6 +102,6 @@ CMakeFiles\bark.dir\clean:
 .PHONY : CMakeFiles\bark.dir\clean
 
 CMakeFiles\bark.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "F:\Project Files\CSSE2310\ass1" "F:\Project Files\CSSE2310\ass1" "F:\Project Files\CSSE2310\ass1\cmake-build-debug" "F:\Project Files\CSSE2310\ass1\cmake-build-debug" "F:\Project Files\CSSE2310\ass1\cmake-build-debug\CMakeFiles\bark.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\Caleb\Desktop\CSSE2310 ass1" "C:\Users\Caleb\Desktop\CSSE2310 ass1" "C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug" "C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug" "C:\Users\Caleb\Desktop\CSSE2310 ass1\cmake-build-debug\CMakeFiles\bark.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles\bark.dir\depend
 
