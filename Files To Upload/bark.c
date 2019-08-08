@@ -22,6 +22,18 @@
  *
  * returns: zero if no errors in execution
  */
+
+int main(int argc, char** argv) {
+    char* one = "one";
+    char* two = "two";
+    char result = concatCharPnt(one, two);
+    if (strcmp(&result, "onetwo") == 1) {
+        return 1;
+    }
+    return 0;
+}
+
+/*
 int main(int argc, char** argv) {
     // verify arg count
     if (argc == 1) {
@@ -48,6 +60,7 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+*/
 
 /*
  * CAN ONLY OPEN FILES IN MOSS IF GIVEN ABSOLUTE PATH, OR IS IN THE SAME DIRECTORY AS
@@ -58,9 +71,10 @@ int main(int argc, char** argv) {
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
-        int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen(deckfile) + 1);
+        int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
         char strbuf[buffersize];
         strcpy(strbuf, getcwd(cwd, sizeof(cwd)));
+        strcat(strbuf, "/");
         strcat(strbuf, deckfile);
         gamefile = fopen(strbuf, "r+");
         if (gamefile == NULL) {
@@ -72,8 +86,37 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
 
 /*
  *
+ *
  * TODO: create .deck file
  */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
+    int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
+    char strbuf[buffersize];
+    strcpy(strbuf, getcwd(cwd, sizeof(cwd)));
+    strcat(strbuf, "/");
+    strcat(strbuf, deckfile);
+    gamefile = fopen(strbuf, "w+");
     return 0;
+}
+
+char concatCharPnt(char* args, ...) {
+    va_list ap;
+    int buffersize = 1;
+
+            va_start(ap, args);
+    while(args != 0) {
+        buffersize += strlen(va_arg(ap, char*));
+    }
+            va_end(ap);
+
+    char result[buffersize];
+
+            va_start(ap, args);
+    strcpy(result, va_arg(ap, char*));
+    while(args !=0) {
+        strcat(result, va_arg(ap, char*));
+    }
+            va_end(ap);
+
+    return *result;
 }
