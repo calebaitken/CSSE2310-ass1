@@ -26,7 +26,7 @@
 int main(int argc, char** argv) {
     char* one = "one";
     char* two = "two";
-    char result = concatCharPnt(one, two);
+    char result = concatCharPnt(2, one, two);
     if (strcmp(&result, "onetwo") == 1) {
         return 1;
     }
@@ -68,6 +68,8 @@ int main(int argc, char** argv) {
  *
  * TODO: needs cleaner solution
  */
+
+/*
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
@@ -83,12 +85,15 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     }
     return 0;
 }
+*/
 
 /*
  *
  *
  * TODO: create .deck file
  */
+
+/*
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
     char strbuf[buffersize];
@@ -98,25 +103,26 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     gamefile = fopen(strbuf, "w+");
     return 0;
 }
+ */
 
-char concatCharPnt(char* args, ...) {
+char concatCharPnt(int argc, char* args, ...) {
     va_list ap;
     int buffersize = 1;
 
-            va_start(ap, args);
-    while(args != 0) {
+    va_start(ap, args);
+    for (int i = 1; i < argc; i++) {
         buffersize += strlen(va_arg(ap, char*));
     }
-            va_end(ap);
+    va_end(ap);
 
     char result[buffersize];
 
-            va_start(ap, args);
+    va_start(ap, args);
     strcpy(result, va_arg(ap, char*));
-    while(args !=0) {
+    for (int i = 2; i < argc; i++) {
         strcat(result, va_arg(ap, char*));
     }
-            va_end(ap);
+    va_end(ap);
 
     return *result;
 }
