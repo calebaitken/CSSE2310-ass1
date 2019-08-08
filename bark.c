@@ -3,10 +3,17 @@
 //
 
 #include <ctype.h>
-#include <unistd.h>
+//#include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdarg.h>
 
 #include "bark.h"
+
+FILE* gamefile;
+
+char cwd[256];
 
 /*
  * Function: main
@@ -22,18 +29,6 @@
  *
  * returns: zero if no errors in execution
  */
-
-int main(int argc, char** argv) {
-    char* one = "one";
-    char* two = "two";
-    char result = concatCharPnt(2, one, two);
-    if (strcmp(&result, "onetwo") == 1) {
-        return 1;
-    }
-    return 0;
-}
-
-/*
 int main(int argc, char** argv) {
     // verify arg count
     if (argc == 1) {
@@ -60,7 +55,6 @@ int main(int argc, char** argv) {
 
     return 0;
 }
-*/
 
 /*
  * CAN ONLY OPEN FILES IN MOSS IF GIVEN ABSOLUTE PATH, OR IS IN THE SAME DIRECTORY AS
@@ -68,8 +62,6 @@ int main(int argc, char** argv) {
  *
  * TODO: needs cleaner solution
  */
-
-/*
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
@@ -85,15 +77,12 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     }
     return 0;
 }
-*/
 
 /*
  *
  *
  * TODO: create .deck file
  */
-
-/*
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
     char strbuf[buffersize];
@@ -103,26 +92,38 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     gamefile = fopen(strbuf, "w+");
     return 0;
 }
- */
 
-char concatCharPnt(int argc, char* args, ...) {
+/**
+ * Helper function to concatenate strings in C
+ * Requires #include <stdarg.h>
+ *          #include <stdlib.h>
+ *          #include <string.h>
+ *
+ * @param argc  number of strings to join
+ * @param argv  first string to join
+ * @param ...   following indefinite number of strings to join
+ * @return      the strings joined together
+ */
+char* concatCharPnt(int argc, char* argv, ...) {
     va_list ap;
     int buffersize = 1;
+    int i;
 
-    va_start(ap, args);
-    for (int i = 1; i < argc; i++) {
+    va_start(ap, argv);
+    buffersize += strlen(argv);
+    for (i = 1; i < argc; i++) {
         buffersize += strlen(va_arg(ap, char*));
     }
     va_end(ap);
 
-    char result[buffersize];
+    char* result = malloc(buffersize);
 
-    va_start(ap, args);
-    strcpy(result, va_arg(ap, char*));
-    for (int i = 2; i < argc; i++) {
+    va_start(ap, argv);
+    strcpy(result, argv);
+    for (i = 1; i < argc; i++) {
         strcat(result, va_arg(ap, char*));
     }
     va_end(ap);
 
-    return *result;
+    return result;
 }
