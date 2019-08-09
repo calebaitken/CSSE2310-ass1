@@ -9,14 +9,16 @@
 C:/Users/Caleb/Desktop/CSSE2310 ass1/bark.c
 ctype.h
 -
-unistd.h
--
 string.h
+-
+stdlib.h
+-
+stdio.h
+-
+stdarg.h
 -
 bark.h
 C:/Users/Caleb/Desktop/CSSE2310 ass1/bark.h
 
 C:/Users/Caleb/Desktop/CSSE2310 ass1/bark.h
-stdio.h
--
 

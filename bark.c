@@ -3,7 +3,7 @@
 //
 
 #include <ctype.h>
-//#include <unistd.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -18,11 +18,6 @@ char cwd[256];
 /*
  * Function: main
  * --------------
- * TODO: Main function of program
- *      - verify number of args
- *      - verify types of args
- *      - verify I/O w/ deckfile
- *      - verify I/O w/ savefile
  *
  * argc:    number of arguments received
  * argv:    array of argument values
@@ -65,12 +60,7 @@ int main(int argc, char** argv) {
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
-        int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
-        char strbuf[buffersize];
-        strcpy(strbuf, getcwd(cwd, sizeof(cwd)));
-        strcat(strbuf, "/");
-        strcat(strbuf, deckfile);
-        gamefile = fopen(strbuf, "r+");
+        gamefile = fopen(concatCharPnt(3, getcwd(cwd, sizeof(cwd)), "/", deckfile), "r+");
         if (gamefile == NULL) {
             return 100;
         }
@@ -84,12 +74,7 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
  * TODO: create .deck file
  */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
-    int buffersize = strlen(getcwd(cwd, sizeof(cwd))) + strlen("/") + strlen(deckfile) + 1;
-    char strbuf[buffersize];
-    strcpy(strbuf, getcwd(cwd, sizeof(cwd)));
-    strcat(strbuf, "/");
-    strcat(strbuf, deckfile);
-    gamefile = fopen(strbuf, "w+");
+    gamefile = fopen(concatCharPnt(3, getcwd(cwd, sizeof(cwd)), "/", deckfile), "w+");
     return 0;
 }
 

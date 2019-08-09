@@ -12,6 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63b29f66-a6d3-4c7c-8bce-d81f99ccd750" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/bark.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/bark.h" afterDir="false" />
     </list>
@@ -33,8 +35,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="759">
-                  <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
+                <state relative-caret-position="408">
+                  <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -42,15 +44,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+        <leaf>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-                  <folding>
-                    <element signature="e#42#60#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="391">
+                  <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -66,8 +65,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/bark.h" />
         <option value="$PROJECT_DIR$/bark.c" />
+        <option value="$PROJECT_DIR$/bark.h" />
       </list>
     </option>
   </component>
@@ -88,7 +87,7 @@
           <expand>
             <path>
               <item name="bark" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ass1" type="462c0819:PsiDirectoryNode" />
+              <item name="CSSE2310 ass1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -147,13 +146,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28661000" />
+    <option name="totallyTimeSpent" value="31187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18443497" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18230277" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -195,18 +194,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="e#42#60#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="391">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="127" column="1" selection-start-line="127" selection-start-column="1" selection-end-line="127" selection-end-column="1" />
+        <state relative-caret-position="408">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
         </state>
       </provider>
     </entry>
