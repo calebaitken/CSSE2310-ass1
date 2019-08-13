@@ -20,6 +20,8 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 
 char* concatCharPnt(int argc, char* argv, ...);
 
-int writeGameStatus(FILE* gamefile, GameStatus gameStatus, char*** gameBoard);
+int writeGameStatus(FILE* gamefile, GameStatus gameStatus);
+
+void allocateBoard(int height, int width);
 
 #endif //ASS1_BARK_H
