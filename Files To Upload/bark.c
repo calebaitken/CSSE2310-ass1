@@ -59,14 +59,18 @@ int main(int argc, char** argv) {
         newGame(argv[1], (int)*argv[2], (int)*argv[3], argv[4], argv[5]);
     }
 
+    deallocateAll();
+
     return 0;
 }
 
-/*
- * CAN ONLY OPEN FILES IN MOSS IF GIVEN ABSOLUTE PATH, OR IS IN THE SAME DIRECTORY AS
- * EXECUTABLE FILE.
+/**
+ * Function loads the current game state from the given termical arguments.
  *
- * TODO: needs cleaner solution
+ * @param deckfile  save file to game state from
+ * @param p1type    player one type (human/computer)
+ * @param p2type    player two type (human/computer)
+ * @return          exit code
  */
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
@@ -122,9 +126,9 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
         fscanf(gamefile, "%s", g_charBuffer);
         //printf("%s\n", g_charBuffer);
         for(j = 0; j < g_gameStatus.width; j++) {
-            g_gameBoard[i][j][0] = (char)g_charBuffer[j*2];
-            g_gameBoard[i][j][1] = (char)g_charBuffer[(j*2)+1];
-            printf("%s", g_gameBoard[i][j]);
+            g_gameBoard[j][i][0] = (char)g_charBuffer[j*2];
+            g_gameBoard[j][i][1] = (char)g_charBuffer[(j*2)+1];
+            printf("%s", g_gameBoard[j][i]);
         }
         printf("\n");
     }
@@ -177,12 +181,12 @@ char* concatCharPnt(int argc, char* argv, ...) {
     return result;
 }
 
-int WriteGameStatus(FILE* gamefile, GameStatus gameStatus) {
+int saveGame() {
     return 0;
 }
 
 /**
- * Allocates memory for a 2D matrix of char[2]
+ * Allocates memory for a 2D matrix of char*
  *
  * @param gameBoard the matrix to allocate memory for
  * @param height    the height of the matrix
@@ -198,4 +202,12 @@ void allocateBoard(int height, int width) {
         }
     }
     printf("%s\n", "init matrix successful");
+}
+
+/**
+ * Free all memory allocations, and closes all open files
+ */
+void deallocateAll() {
+    free(g_gameBoard);
+    fclose(gamefile);
 }

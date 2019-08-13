@@ -17,11 +17,11 @@ int main(int argc, char** argv);
 
 int loadGame(char* deckfile, char* p1type, char* p2type);
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
+int saveGame();
 
 char* concatCharPnt(int argc, char* argv, ...);
 
-int writeGameStatus(FILE* gamefile, GameStatus gameStatus);
-
 void allocateBoard(int height, int width);
+void deallocateAll();
 
 #endif //ASS1_BARK_H

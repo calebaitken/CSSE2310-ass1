@@ -12,6 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63b29f66-a6d3-4c7c-8bce-d81f99ccd750" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/bark.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/bark.h" afterDir="false" />
     </list>
@@ -33,8 +35,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="370">
-                  <caret line="175" column="32" lean-forward="true" selection-start-line="175" selection-start-column="32" selection-end-line="175" selection-end-column="32" />
+                <state relative-caret-position="374">
+                  <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
                 </state>
               </provider>
             </entry>
@@ -56,7 +58,7 @@
             <entry file="file://$PROJECT_DIR$/bark.h">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="357">
-                  <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+                  <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -73,8 +75,8 @@
       <list>
         <option value="$PROJECT_DIR$/testing.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/bark.c" />
         <option value="$PROJECT_DIR$/bark.h" />
+        <option value="$PROJECT_DIR$/bark.c" />
       </list>
     </option>
   </component>
@@ -150,12 +152,12 @@
       <workItem from="1564988828039" duration="3634000" />
       <workItem from="1565063453451" duration="9312000" />
       <workItem from="1565263321372" duration="737000" />
-      <workItem from="1565683821689" duration="14399000" />
+      <workItem from="1565683821689" duration="16268000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52307000" />
+    <option name="totallyTimeSpent" value="54176000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -214,14 +216,14 @@
     <entry file="file://$PROJECT_DIR$/bark.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="175" column="32" lean-forward="true" selection-start-line="175" selection-start-column="32" selection-end-line="175" selection-end-column="32" />
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
