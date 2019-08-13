@@ -131,13 +131,18 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     g_gameStatus.turnStatus = 1;    // TODO: get a real number
     g_gameStatus.cardsDrawn = 0;
 
+    printf("%s\n", "start generating");
+
     int i, j;
-    allocateBoard(g_gameStatus.height, g_gameStatus.width);
-    for (i = 0; i < g_gameStatus.width; i++) {
-        for (j = 0; j < g_gameStatus.height; i++) {
-            g_gameBoard[i][j] = "**";
+    for (i = 0; i < g_gameStatus.height; i++) {
+        for (j = 0; j < g_gameStatus.width; j++) {
+            g_gameBoard[j][i][0] = (char)"*"[0];
+            g_gameBoard[j][i][1] = '*';
+            printf("%s\n", g_gameBoard[j][i]);
         }
     }
+
+    printf("%s\n", "done");
 
     return 0;
 }
