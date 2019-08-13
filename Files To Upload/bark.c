@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
 }
 
 /**
- * Function loads the current game state from the given termical arguments.
+ * Function loads the current game state from the given terminal arguments.
  *
  * @param deckfile  save file to game state from
  * @param p1type    player one type (human/computer)
@@ -107,7 +107,7 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
     int i, j;
-    for(i = 0; i < g_gameStatus.height; i++) {
+    for(i = 0; i < (g_gameStatus.height-1); i++) {
         fscanf(gamefile, "%s", g_charBuffer);
         for(j = 0; j < g_gameStatus.width; j++) {
             g_gameBoard[j][i][0] = (char)g_charBuffer[j*2];
@@ -142,14 +142,12 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     return 0;
 }
 
-/**
- * Displays the current state of the board
- */
 void displayBoard() {
+    printf("%s\n", "displaying board");
     int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
         for (j = 0; j < g_gameStatus.width; i++) {
-            printf("%s ", g_gameBoard[j][i]);
+            printf("%s%s", g_gameBoard[j][i], " ");
         }
         printf("\n");
     }
