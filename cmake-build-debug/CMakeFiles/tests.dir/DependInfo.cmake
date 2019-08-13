@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "F:/Project Files/CSSE2310/ass1/bark.c" "F:/Project Files/CSSE2310/ass1/cmake-build-debug/CMakeFiles/bark.dir/bark.c.obj"
+  "F:/Project Files/CSSE2310/ass1/testing.c" "F:/Project Files/CSSE2310/ass1/cmake-build-debug/CMakeFiles/tests.dir/testing.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 

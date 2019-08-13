@@ -15,14 +15,9 @@ FILE* gamefile;
 
 char charBuffer[255];
 
-struct Game {
-    int width;
-    int height;
-    int cardsDrawn;
-    int turnStatus;
-} gameStatus;
+GameStatus gameStatus;
 
-char** gameBoard;
+char*** gameBoard;
 
 char* p1Hand;
 char* p2Hand;
@@ -80,19 +75,19 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
 
     // retrieve width from savefile
     fscanf(gamefile, "%s", charBuffer);
-    gameStatus.width = (int) charBuffer;
+    strtol(charBuffer, (char**)charBuffer, gameStatus.width);
 
     // retrieve height from savefile
     fscanf(gamefile, "%s", charBuffer);
-    gameStatus.height = (int) charBuffer;
+    strtol(charBuffer, (char**)charBuffer, gameStatus.height);
 
     // retrieve number of cards drawn from the deck
     fscanf(gamefile, "%s", charBuffer);
-    gameStatus.cardsDrawn = (int) charBuffer;
+    strtol(charBuffer, (char**)charBuffer, gameStatus.cardsDrawn);
 
     // retrieve player turn indicator
-    fscanf(gamefile, "%s", charBuffer);
-    gameStatus.turnStatus = (int) charBuffer;
+    fscanf(gamefile, "%d", charBuffer);
+    strtol(charBuffer, (char**)charBuffer, gameStatus.turnStatus);
 
     // retrieve deckname TODO: handle this
     fgets(charBuffer, 255, gamefile);
@@ -105,10 +100,14 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     fgets(charBuffer, 255, gamefile);
     strcpy(p2Hand, charBuffer);
 
-    //int i;
-    gameBoard = malloc(gameStatus.height * sizeof(char *));
-    for (int i = 0; i < gameStatus.height; i++) {
-        gameBoard[i] = malloc(gameStatus.width * (sizeof(char) * 2));
+    // allocate memory for gameboard matrix
+    int i, j;
+    gameBoard = calloc(gameStatus.width, sizeof(char**));
+    for (i = 0; i < gameStatus.width; i++) {
+        gameBoard[i] = calloc(gameStatus.height, sizeof(char[2]));
+        for(j = 0; j < gameStatus.height; j++) {
+            gameBoard[i][j] = calloc(2, sizeof(char));
+        }
     }
 
     return 0;

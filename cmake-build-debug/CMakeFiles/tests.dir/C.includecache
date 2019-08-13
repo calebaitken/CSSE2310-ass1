@@ -6,21 +6,11 @@
 
 #IncludeRegexTransform: 
 
-F:/Project Files/CSSE2310/ass1/bark.c
-ctype.h
--
-unistd.h
--
-string.h
--
+F:/Project Files/CSSE2310/ass1/testing.c
 stdlib.h
 -
 stdio.h
 -
-stdarg.h
+string.h
 -
-bark.h
-F:/Project Files/CSSE2310/ass1/bark.h
-
-F:/Project Files/CSSE2310/ass1/bark.h
 

@@ -13,7 +13,14 @@
 
 FILE* gamefile;
 
-char cwd[256];
+char charBuffer[255];
+
+GameStatus gameStatus;
+
+char*** gameBoard;
+
+char* p1Hand;
+char* p2Hand;
 
 /*
  * Function: main
@@ -60,11 +67,49 @@ int main(int argc, char** argv) {
 int loadGame(char* deckfile, char* p1type, char* p2type) {
     gamefile = fopen(deckfile, "r+");
     if (gamefile == NULL) {
-        gamefile = fopen(concatCharPnt(3, getcwd(cwd, sizeof(cwd)), "/", deckfile), "r+");
+        gamefile = fopen(concatCharPnt(3, getcwd(charBuffer, sizeof(charBuffer)), "/", deckfile), "r+");
         if (gamefile == NULL) {
-            return 100;
+            return 3;
         }
     }
+
+    // retrieve width from savefile
+    fscanf(gamefile, "%s", charBuffer);
+    strtol(charBuffer, (char**)charBuffer, gameStatus.width);
+
+    // retrieve height from savefile
+    fscanf(gamefile, "%s", charBuffer);
+    strtol(charBuffer, (char**)charBuffer, gameStatus.height);
+
+    // retrieve number of cards drawn from the deck
+    fscanf(gamefile, "%s", charBuffer);
+    strtol(charBuffer, (char**)charBuffer, gameStatus.cardsDrawn);
+
+    // retrieve player turn indicator
+    fscanf(gamefile, "%d", charBuffer);
+    strtol(charBuffer, (char**)charBuffer, gameStatus.turnStatus);
+
+    // retrieve deckname TODO: handle this
+    fgets(charBuffer, 255, gamefile);
+
+    // retrieve player one's hand
+    fgets(charBuffer, 255, gamefile);
+    strcpy(p1Hand, charBuffer);
+
+    // retrieve player two's hand
+    fgets(charBuffer, 255, gamefile);
+    strcpy(p2Hand, charBuffer);
+
+    // allocate memory for gameboard matrix
+    int i, j;
+    gameBoard = calloc(gameStatus.width, sizeof(char**));
+    for (i = 0; i < gameStatus.width; i++) {
+        gameBoard[i] = calloc(gameStatus.height, sizeof(char[2]));
+        for(j = 0; j < gameStatus.height; j++) {
+            gameBoard[i][j] = calloc(2, sizeof(char));
+        }
+    }
+
     return 0;
 }
 
@@ -74,7 +119,7 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
  * TODO: create .deck file
  */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
-    gamefile = fopen(concatCharPnt(3, getcwd(cwd, sizeof(cwd)), "/", deckfile), "w+");
+    gamefile = fopen(concatCharPnt(4, getcwd(charBuffer, sizeof(charBuffer)), "/", deckfile, ".deck"), "w+");
     return 0;
 }
 
@@ -111,4 +156,8 @@ char* concatCharPnt(int argc, char* argv, ...) {
     va_end(ap);
 
     return result;
+}
+
+int WriteGameStatus(FILE* gamefile) {
+
 }

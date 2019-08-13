@@ -5,12 +5,13 @@
 #ifndef ASS1_BARK_H
 #define ASS1_BARK_H
 
-struct Game {
+struct gameStatus {
     int width;
     int height;
     int cardsDrawn;
     int turnStatus;
 };
+typedef struct gameStatus GameStatus;
 
 int main(int argc, char** argv);
 
@@ -19,6 +20,6 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 
 char* concatCharPnt(int argc, char* argv, ...);
 
-void writeGameStatus(FILE* gamefile);
+int writeGameStatus(FILE* gamefile, GameStatus gameStatus, char*** gameBoard);
 
 #endif //ASS1_BARK_H
