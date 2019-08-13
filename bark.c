@@ -73,21 +73,31 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
         }
     }
 
+    printf("%s", "Beginning to get values from file");
+
     // retrieve width from savefile
     fscanf(gamefile, "%s", charBuffer);
     strtol(charBuffer, (char**)charBuffer, gameStatus.width);
+
+    printf("%s%d\n", "got width: ", gameStatus.width);
 
     // retrieve height from savefile
     fscanf(gamefile, "%s", charBuffer);
     strtol(charBuffer, (char**)charBuffer, gameStatus.height);
 
+    printf("%s%d\n", "got height: ", gameStatus.height);
+
     // retrieve number of cards drawn from the deck
     fscanf(gamefile, "%s", charBuffer);
     strtol(charBuffer, (char**)charBuffer, gameStatus.cardsDrawn);
 
+    printf("%s%d\n", "got drawn: ", gameStatus.cardsDrawn);
+
     // retrieve player turn indicator
-    fscanf(gamefile, "%d", charBuffer);
+    fscanf(gamefile, "%s", charBuffer);
     strtol(charBuffer, (char**)charBuffer, gameStatus.turnStatus);
+
+    printf("%s%d\n", "got indic: ", gameStatus.turnStatus);
 
     // retrieve deckname TODO: handle this
     fgets(charBuffer, 255, gamefile);
@@ -100,6 +110,8 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
     fgets(charBuffer, 255, gamefile);
     strcpy(p2Hand, charBuffer);
 
+    printf("%s\n", "init matrix");
+
     // allocate memory for gameboard matrix
     int i, j;
     gameBoard = calloc(gameStatus.width, sizeof(char**));
@@ -109,6 +121,8 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
             gameBoard[i][j] = calloc(2, sizeof(char));
         }
     }
+
+    printf("%s\n", "init matrix successful")
 
     return 0;
 }
@@ -159,5 +173,5 @@ char* concatCharPnt(int argc, char* argv, ...) {
 }
 
 int WriteGameStatus(FILE* gamefile) {
-
+    return 0;
 }
