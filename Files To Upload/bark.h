@@ -19,6 +19,9 @@ int loadGame(char* deckfile, char* p1type, char* p2type);
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 int saveGame();
 
+char* drawCard(char playerHand);
+void displayBoard();
+
 char* concatCharPnt(int argc, char* argv, ...);
 
 void allocateBoard(int height, int width);

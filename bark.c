@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
 }
 
 /**
- * Function loads the current game state from the given termical arguments.
+ * Function loads the current game state from the given terminal arguments.
  *
  * @param deckfile  save file to game state from
  * @param p1type    player one type (human/computer)
@@ -83,36 +83,56 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
         }
     }
 
+    printf("%s", "Beginning to get values from file\n");
+
     // retrieve width from savefile
     fscanf(gamefile, "%d", &g_gameStatus.width);
+
+    printf("%s%d\n", "got width: ", g_gameStatus.width);
 
     // retrieve height from savefile
     fscanf(gamefile, "%d", &g_gameStatus.height);
 
+    printf("%s%d\n", "got height: ", g_gameStatus.height);
+
     // retrieve number of cards drawn from the deck
     fscanf(gamefile, "%d", &g_gameStatus.cardsDrawn);
+
+    printf("%s%d\n", "got drawn: ", g_gameStatus.cardsDrawn);
 
     // retrieve player turn indicator
     fscanf(gamefile, "%d", &g_gameStatus.turnStatus);
 
+    printf("%s%d\n", "got indic: ", g_gameStatus.turnStatus);
+
     // retrieve deckname TODO: handle this
     fscanf(gamefile, "%s", g_charBuffer);
+    printf("%s\n", g_charBuffer);
 
     // retrieve player one's hand
     fscanf(gamefile, "%s", &p1Hand);
+    printf("%s\n", &p1Hand);
 
     // retrieve player two's hand
     fscanf(gamefile, "%s", &p2Hand);
+    printf("%s\n", &p2Hand);
+
+    printf("%s\n", "init matrix");
 
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
+
+    printf("%s\n", "getting values from save for gamebaord");
 
     int i, j;
     for(i = 0; i < g_gameStatus.height; i++) {
         fscanf(gamefile, "%s", g_charBuffer);
+        //printf("%s\n", g_charBuffer);
         for(j = 0; j < g_gameStatus.width; j++) {
             g_gameBoard[j][i][0] = (char)g_charBuffer[j*2];
             g_gameBoard[j][i][1] = (char)g_charBuffer[(j*2)+1];
+            printf("%s", g_gameBoard[j][i]);
         }
+        printf("\n");
     }
 
     return 0;
@@ -142,9 +162,6 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     return 0;
 }
 
-/**
- * Displays the current state of the board
- */
 void displayBoard() {
     int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
@@ -212,6 +229,7 @@ void allocateBoard(int height, int width) {
             g_gameBoard[i][j] = calloc(MAX_CHAR_LEN, sizeof(char));
         }
     }
+    printf("%s\n", "init matrix successful");
 }
 
 /**
@@ -220,4 +238,5 @@ void allocateBoard(int height, int width) {
 void deallocateAll() {
     free(g_gameBoard);
     fclose(gamefile);
+    printf("%s", "deallocated");
 }

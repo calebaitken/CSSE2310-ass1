@@ -15,7 +15,6 @@
       <change beforePath="$PROJECT_DIR$/Files To Upload/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Files To Upload/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/bark.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/bark.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +34,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+                <state relative-caret-position="370">
+                  <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
                 </state>
               </provider>
             </entry>
@@ -152,12 +151,12 @@
       <workItem from="1564988828039" duration="3634000" />
       <workItem from="1565063453451" duration="9312000" />
       <workItem from="1565263321372" duration="737000" />
-      <workItem from="1565683821689" duration="16268000" />
+      <workItem from="1565683821689" duration="16477000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54176000" />
+    <option name="totallyTimeSpent" value="54385000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -222,8 +221,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="370">
+          <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
         </state>
       </provider>
     </entry>
