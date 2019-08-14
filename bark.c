@@ -11,17 +11,20 @@
 
 #include "bark.h"
 
-FILE* gamefile;
+FILE* g_gamefile;
+FILE* g_deckfile;
 
 char g_charBuffer[255];
 
 int MAX_CHAR_LEN = 2;
 int EXPECTED_ARGS_HIGH = 6;
 int EXPECTED_ARGS_LOW = 4;
+int MAX_CARD_LEN = 2;
 
 GameStatus g_gameStatus;
 
 char*** g_gameBoard;
+char** g_deck;
 
 char p1Hand;
 char p2Hand;
@@ -79,40 +82,41 @@ int main(int argc, char** argv) {
  * @return          exit code
  */
 int loadGame(char* deckfile, char* p1type, char* p2type) {
-    gamefile = fopen(deckfile, "r+");
-    if (gamefile == NULL) {
-        gamefile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
-        if (gamefile == NULL) {
+    g_gamefile = fopen(deckfile, "r+");
+    if (g_gamefile == NULL) {
+        g_gamefile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
+        if (g_gamefile == NULL) {
             return 3;
         }
     }
 
     // retrieve width from savefile
-    fscanf(gamefile, "%d", &g_gameStatus.width);
+    fscanf(g_gamefile, "%d", &g_gameStatus.width);
 
     // retrieve height from savefile
-    fscanf(gamefile, "%d", &g_gameStatus.height);
+    fscanf(g_gamefile, "%d", &g_gameStatus.height);
 
     // retrieve number of cards drawn from the deck
-    fscanf(gamefile, "%d", &g_gameStatus.cardsDrawn);
+    fscanf(g_gamefile, "%d", &g_gameStatus.cardsDrawn);
 
     // retrieve player turn indicator
-    fscanf(gamefile, "%d", &g_gameStatus.turnStatus);
+    fscanf(g_gamefile, "%d", &g_gameStatus.turnStatus);
 
     // retrieve deckname TODO: handle this
-    fscanf(gamefile, "%s", g_charBuffer);
+    fscanf(g_gamefile, "%s", g_charBuffer);
+    loadDeck(g_charBuffer);
 
     // retrieve player one's hand
-    fscanf(gamefile, "%s", &p1Hand);
+    fscanf(g_gamefile, "%s", &p1Hand);
 
     // retrieve player two's hand
-    fscanf(gamefile, "%s", &p2Hand);
+    fscanf(g_gamefile, "%s", &p2Hand);
 
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
     int i, j;
     for(i = 0; i < g_gameStatus.height; i++) {
-        fscanf(gamefile, "%s", g_charBuffer);
+        fscanf(g_gamefile, "%s", g_charBuffer);
         for(j = 0; j < g_gameStatus.width; j++) {
             g_gameBoard[j][i][0] = (char)g_charBuffer[j*2];
             g_gameBoard[j][i][1] = (char)g_charBuffer[(j*2)+1];
@@ -128,8 +132,7 @@ int loadGame(char* deckfile, char* p1type, char* p2type) {
  * TODO: create .deck file
  */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
-    gamefile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "w+");
-
+    loadDeck(deckfile);
     g_gameStatus.width = width;
     g_gameStatus.height = height;
     g_gameStatus.turnStatus = 1;    // TODO: get a real number
@@ -137,11 +140,37 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
 
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
+    // fill board with blanks
     int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
         for (j = 0; j < g_gameStatus.width; j++) {
             strcpy(g_gameBoard[j][i], "**");
         }
+    }
+
+    return 0;
+}
+
+int saveGame() {
+    return 0;
+}
+
+int loadDeck(char* deckfile) {
+    g_deckfile = fopen(deckfile, "r+");
+    if(g_deckfile == NULL) {
+        g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
+        if (g_deckfile == NULL) {
+            return 3;
+        }
+    }
+
+    int cards, i;
+    fscanf(g_deckfile, "%d", &cards);
+
+    allocateDeck(cards);
+
+    for (i = 0; i < cards; i++) {
+        fscanf(g_deckfile, "%s", g_deck[i]);
     }
 
     return 0;
@@ -195,10 +224,6 @@ char* concatCharPnt(int argc, char* argv, ...) {
     return result;
 }
 
-int saveGame() {
-    return 0;
-}
-
 /**
  * Allocates memory for a 2D matrix of char*
  *
@@ -212,10 +237,23 @@ void allocateBoard(int height, int width) {
     int i, j;
     g_gameBoard = calloc(width, sizeof(char**));
     for (i = 0; i < width; i++) {
-        g_gameBoard[i] = calloc(height, sizeof(char *));
+        g_gameBoard[i] = calloc(height, sizeof(char*));
         for(j = 0; j < height; j++) {
             g_gameBoard[i][j] = calloc(MAX_CHAR_LEN, sizeof(char));
         }
+    }
+}
+
+/**
+ * Allocates memory for the array of strings
+ *
+ * @param cardc count of cards in deck
+ */
+void allocateDeck(int cardc) {
+    int i;
+    g_deck = calloc(cardc, sizeof(char*));
+    for (i = 0; i < cardc; i++) {
+        g_deck[i] = calloc(MAX_CARD_LEN, sizeof(char));
     }
 }
 
@@ -224,5 +262,7 @@ void allocateBoard(int height, int width) {
  */
 void deallocateAll() {
     free(g_gameBoard);
-    fclose(gamefile);
+    free(g_deck);
+    fclose(g_gamefile);
+    fclose(g_deckfile);
 }
