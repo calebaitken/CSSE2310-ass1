@@ -16,13 +16,18 @@ FILE* g_deckfile;
 
 char g_charBuffer[255];
 
+int MAX_CHAR_LEN = 2;
+int EXPECTED_ARGS_HIGH = 6;
+int EXPECTED_ARGS_LOW = 4;
+int MAX_CARD_LEN = 2;
+
 GameStatus g_gameStatus;
 
 char*** g_gameBoard;
-
 char** g_deck;
-char** g_p1Hand;
-char** g_p2Hand;
+
+char p1Hand;
+char p2Hand;
 
 /*
  * Function: main
@@ -37,20 +42,14 @@ int main(int argc, char** argv) {
     // verify arg count
     if (argc == 1) {
         //function for printing help dialog
-        fprintf(stderr, ERR1_MSG);
-        exit(1);
+        return 1;
     } else if (argc > EXPECTED_ARGS_HIGH) {
         //too many arguments given
-        fprintf(stderr, ERR1_MSG);
-        exit(1);
+        return 1;
     } else if (argc > EXPECTED_ARGS_LOW && argc < EXPECTED_ARGS_HIGH) {
         // invalid combination of arguments
-        fprintf(stderr, ERR1_MSG);
-        exit(1);
+        return 1;
     }
-
-    // may as well do this before opening up our files since it relies on constants
-    allocateHands();
 
     // handle arg values
     if (argc == EXPECTED_ARGS_LOW) {
@@ -58,15 +57,12 @@ int main(int argc, char** argv) {
     } else if (argc == EXPECTED_ARGS_HIGH) {
         if (!(isdigit(*argv[2]) && isdigit(*argv[3]))) {
             // width or height are not numbers
-            fprintf(stderr, ERR2_MSG);
-            exit(2);
+            return 2;
         }
         newGame(argv[1], strtol(argv[2], NULL, 10), strtol(argv[3], NULL, 10), argv[4], argv[5]);
     }
 
     displayBoard();
-
-    displayHand();
 
     // TODO: handle first move
 
@@ -80,40 +76,18 @@ int main(int argc, char** argv) {
 /**
  * Function loads the current game state from the given terminal arguments.
  *
- * @param savefile  save file to game state from
+ * @param deckfile  save file to game state from
  * @param p1type    player one type (human/computer)
  * @param p2type    player two type (human/computer)
  * @return          exit code
  */
-int loadGame(char* savefile, char* p1type, char* p2type) {
-    // open saved game file
-    g_gamefile = fopen(savefile, "r+");
+int loadGame(char* deckfile, char* p1type, char* p2type) {
+    g_gamefile = fopen(deckfile, "r+");
     if (g_gamefile == NULL) {
-        g_gamefile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", savefile), "r+");
+        g_gamefile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
         if (g_gamefile == NULL) {
-            fprintf(stderr, ERR4_MSG);
-            exit(4);
+            return 3;
         }
-    }
-
-    // assign player one type
-    if (strcmp(p1type, "h") == 0) {
-        g_gameStatus.playerOneType = 0;
-    } else if (strcmp(p1type, "a") == 0) {
-        g_gameStatus.playerOneType = 1;
-    } else {
-        fprintf(stderr, ERR2_MSG);
-        exit(2);
-    }
-
-    // assign player two type
-    if (strcmp(p2type, "h") == 0) {
-        g_gameStatus.playerTwoType = 0;
-    } else if (strcmp(p2type, "a") == 0) {
-        g_gameStatus.playerTwoType = 1;
-    } else {
-        fprintf(stderr, ERR2_MSG);
-        exit(2);
     }
 
     // retrieve width from savefile
@@ -133,15 +107,13 @@ int loadGame(char* savefile, char* p1type, char* p2type) {
     loadDeck(g_charBuffer);
 
     // retrieve player one's hand
-    fscanf(g_gamefile, "%s", g_charBuffer);
-
+    fscanf(g_gamefile, "%s", &p1Hand);
 
     // retrieve player two's hand
-    fscanf(g_gamefile, "%s", &g_p2Hand);
+    fscanf(g_gamefile, "%s", &p2Hand);
 
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
-    // get card's from saved file and copy into char*** g_gameBoard
     int i, j;
     for(i = 0; i < g_gameStatus.height; i++) {
         fscanf(g_gamefile, "%s", g_charBuffer);
@@ -188,8 +160,7 @@ int loadDeck(char* deckfile) {
     if(g_deckfile == NULL) {
         g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
         if (g_deckfile == NULL) {
-            fprintf(stderr, ERR3_MSG);
-            exit(3);
+            return 3;
         }
     }
 
@@ -216,13 +187,6 @@ void displayBoard() {
         }
         printf("\n");
     }
-}
-
-/**
- * Display's the hand of the player about to make a move
- */
-void displayHand() {
-
 }
 
 /**
@@ -275,7 +239,7 @@ void allocateBoard(int height, int width) {
     for (i = 0; i < width; i++) {
         g_gameBoard[i] = calloc(height, sizeof(char*));
         for(j = 0; j < height; j++) {
-            g_gameBoard[i][j] = calloc(MAX_CARD_LEN, sizeof(char));
+            g_gameBoard[i][j] = calloc(MAX_CHAR_LEN, sizeof(char));
         }
     }
 }
@@ -294,29 +258,11 @@ void allocateDeck(int cardc) {
 }
 
 /**
- * Allocates memory for the array of string representing a player's hand
- */
-void allocateHands() {
-    int i;
-    g_p1Hand = calloc(MAX_CARDS_IN_HAND, sizeof(char*));
-    for (i = 0; i < MAX_CARDS_IN_HAND; i++) {
-        g_p1Hand[i] = calloc(MAX_CARD_LEN, sizeof(char));
-    }
-
-    g_p2Hand = calloc(MAX_CARDS_IN_HAND, sizeof(char*));
-    for (i = 0; i < MAX_CARDS_IN_HAND; i++) {
-        g_p2Hand[i] = calloc(MAX_CARD_LEN, sizeof(char));
-    }
-}
-
-/**
  * Free all memory allocations, and closes all open files
  */
 void deallocateAll() {
     free(g_gameBoard);
     free(g_deck);
-    free(g_p1Hand);
-    free(g_p2Hand);
     fclose(g_gamefile);
     fclose(g_deckfile);
 }
