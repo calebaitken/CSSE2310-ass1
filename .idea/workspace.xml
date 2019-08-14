@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated />
+    <generated>
+      <config projectName="bark" targetName="bark" />
+    </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
@@ -10,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63b29f66-a6d3-4c7c-8bce-d81f99ccd750" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.c" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Files To Upload/bark.h" beforeDir="false" afterPath="$PROJECT_DIR$/Files To Upload/bark.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,22 +24,27 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-104">
-                  <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+                <state relative-caret-position="394">
+                  <caret line="216" column="21" lean-forward="true" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="17">
+                  <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+                </state>
+              </provider>
             </entry>
           </file>
         </leaf>
@@ -49,8 +54,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="93">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
+                <state relative-caret-position="263">
+                  <caret line="16" selection-start-line="16" selection-end-line="16" />
                 </state>
               </provider>
             </entry>
@@ -82,10 +87,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/testing.c" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/bark.h" />
         <option value="$PROJECT_DIR$/bark.c" />
         <option value="$PROJECT_DIR$/makefile" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
       </list>
     </option>
   </component>
@@ -104,21 +109,21 @@
         <subPane>
           <expand>
             <path>
-              <item name="ass1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bark" type="b2602c69:ProjectViewProjectNode" />
               <item name="ass1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ass1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bark" type="b2602c69:ProjectViewProjectNode" />
               <item name="ass1" type="462c0819:PsiDirectoryNode" />
               <item name="Files To Upload" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ass1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bark" type="b2602c69:ProjectViewProjectNode" />
               <item name="ass1" type="462c0819:PsiDirectoryNode" />
               <item name="SVN" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ass1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bark" type="b2602c69:ProjectViewProjectNode" />
               <item name="ass1" type="462c0819:PsiDirectoryNode" />
               <item name="SVN" type="462c0819:PsiDirectoryNode" />
               <item name="ass1" type="462c0819:PsiDirectoryNode" />
@@ -156,7 +161,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="bark" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="ass1_spec.pdf three four" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project" TARGET_NAME="bark" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project" RUN_TARGET_NAME="bark">
+    <configuration name="bark" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="ass1_spec.pdf three four" PASS_PARENT_ENVS_2="true" PROJECT_NAME="bark" TARGET_NAME="bark" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="bark" RUN_TARGET_NAME="bark">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -179,12 +184,12 @@
       <workItem from="1565263321372" duration="737000" />
       <workItem from="1565683821689" duration="20036000" />
       <workItem from="1565745021018" duration="10731000" />
-      <workItem from="1565788569057" duration="2526000" />
+      <workItem from="1565788569057" duration="3348000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71201000" />
+    <option name="totallyTimeSpent" value="72023000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -202,10 +207,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.29252437" />
-      <window_info active="true" anchor="bottom" id="CMake" order="12" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.29252437" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -243,22 +248,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="33" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bark.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="263">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+        <state relative-caret-position="394">
+          <caret line="216" column="21" lean-forward="true" selection-start-line="216" selection-start-column="21" selection-end-line="216" selection-end-column="21" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
