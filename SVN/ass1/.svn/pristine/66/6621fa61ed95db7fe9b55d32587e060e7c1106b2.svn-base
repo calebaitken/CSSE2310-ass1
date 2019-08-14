@@ -1,0 +1,2 @@
+bark: bark.c
+    gcc -o bark bark.c -Wall -pedantic -std=c99
