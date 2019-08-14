@@ -33,8 +33,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="544">
-                  <caret line="140" column="46" lean-forward="true" selection-start-line="140" selection-start-column="46" selection-end-line="140" selection-end-column="46" />
+                <state relative-caret-position="299">
+                  <caret line="173" column="44" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
@@ -55,8 +55,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/bark.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+                <state relative-caret-position="391">
+                  <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
                 </state>
               </provider>
             </entry>
@@ -89,6 +89,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -100,7 +101,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -151,17 +151,18 @@
       <workItem from="1565063453451" duration="9312000" />
       <workItem from="1565263321372" duration="737000" />
       <workItem from="1565683821689" duration="20036000" />
+      <workItem from="1565745021018" duration="2677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57944000" />
+    <option name="totallyTimeSpent" value="60621000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18443497" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18656716" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -194,16 +195,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/testing.c" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -213,15 +205,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="391">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bark.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="140" column="46" lean-forward="true" selection-start-line="140" selection-start-column="46" selection-end-line="140" selection-end-column="46" />
+        <state relative-caret-position="299">
+          <caret line="173" column="44" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
         </state>
       </provider>
     </entry>

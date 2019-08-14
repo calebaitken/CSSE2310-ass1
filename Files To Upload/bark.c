@@ -56,10 +56,14 @@ int main(int argc, char** argv) {
             // width or height are not numbers
             return 2;
         }
-        newGame(argv[1], (int)*argv[2], (int)*argv[3], argv[4], argv[5]);
+        newGame(argv[1], strtol(argv[2], NULL, 10), strtol(argv[3], NULL, 10), argv[4], argv[5]);
     }
 
     displayBoard();
+
+    // TODO: handle first move
+
+    // TODO: add game loop with finish condition
 
     deallocateAll();
 
@@ -131,18 +135,14 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     g_gameStatus.turnStatus = 1;    // TODO: get a real number
     g_gameStatus.cardsDrawn = 0;
 
-    printf("%s\n", "start generating");
+    allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
     int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
         for (j = 0; j < g_gameStatus.width; j++) {
-            g_gameBoard[j][i][0] = '*';
-            g_gameBoard[j][i][1] = '*';
-            printf("%s\n", g_gameBoard[j][i]);
+            strcpy(g_gameBoard[j][i], "**");
         }
     }
-
-    printf("%s\n", "done");
 
     return 0;
 }
