@@ -86,6 +86,8 @@ int main(int argc, char** argv) {
  * @return          exit code
  */
 int loadGame(char* savefile, char* p1type, char* p2type) {
+    int i, j;
+
     // open saved game file
     g_gamefile = fopen(savefile, "r+");
     if (g_gamefile == NULL) {
@@ -128,21 +130,27 @@ int loadGame(char* savefile, char* p1type, char* p2type) {
     // retrieve player turn indicator
     fscanf(g_gamefile, "%d", &g_gameStatus.turnStatus);
 
-    // retrieve deckname TODO: handle this
+    // retrieve deck
     fscanf(g_gamefile, "%s", g_charBuffer);
     loadDeck(g_charBuffer);
 
     // retrieve player one's hand
     fscanf(g_gamefile, "%s", g_charBuffer);
-
+    for (i = 0; i < (strlen(g_charBuffer))/2; i++) {
+        g_p1Hand[i][0] = (char)g_charBuffer[i*2];
+        g_p1Hand[i][1] = (char)g_charBuffer[(i*2)+1];
+    }
 
     // retrieve player two's hand
-    fscanf(g_gamefile, "%s", &g_p2Hand);
+    fscanf(g_gamefile, "%s", g_charBuffer);
+    for (i = 0; i < (strlen(g_charBuffer))/2; i++) {
+        g_p2Hand[i][0] = (char)g_charBuffer[i*2];
+        g_p2Hand[i][1] = (char)g_charBuffer[(i*2)+1];
+    }
 
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
     // get card's from saved file and copy into char*** g_gameBoard
-    int i, j;
     for(i = 0; i < g_gameStatus.height; i++) {
         fscanf(g_gamefile, "%s", g_charBuffer);
         for(j = 0; j < g_gameStatus.width; j++) {
@@ -160,6 +168,8 @@ int loadGame(char* savefile, char* p1type, char* p2type) {
  * TODO: create .deck file
  */
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
+    int i, j;
+
     loadDeck(deckfile);
     g_gameStatus.width = width;
     g_gameStatus.height = height;
@@ -169,11 +179,18 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type) {
     allocateBoard(g_gameStatus.height, g_gameStatus.width);
 
     // fill board with blanks
-    int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
         for (j = 0; j < g_gameStatus.width; j++) {
             strcpy(g_gameBoard[j][i], "**");
         }
+    }
+
+    // draw five cards for each player
+    for (i = 0; i < CARDS_IN_STARTING_HAND; i++) {
+        drawCard(g_p1Hand);
+    }
+    for (i = 0; i < CARDS_IN_STARTING_HAND; i++) {
+        drawCard(g_p2Hand);
     }
 
     return 0;
@@ -223,6 +240,16 @@ void displayBoard() {
  */
 void displayHand() {
 
+}
+
+/**
+ * Appends the next card in the deck to the last slot of the player's hand
+ *
+ * @param playerHand    player to give card to
+ */
+void drawCard(char** playerHand) {
+    playerHand[MAX_CARDS_IN_HAND-1] = g_deck[g_gameStatus.cardsDrawn];
+    g_gameStatus.cardsDrawn++;
 }
 
 /**

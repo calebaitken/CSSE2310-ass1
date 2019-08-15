@@ -9,6 +9,7 @@
 #define EXPECTED_ARGS_LOW 4
 #define MAX_CARD_LEN 2
 #define MAX_CARDS_IN_HAND 6
+#define CARDS_IN_STARTING_HAND 5
 
 #define ERR1_MSG "Usage:\tbark savefile p1type p2type\n\tbark deck width height p1type p2type\n"
 #define ERR2_MSG "Incorrect arg types\n"
@@ -31,10 +32,10 @@ int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 int saveGame();
 int loadDeck(char* deckfile);
 
-char* drawCard(char playerHand);
-
 void displayBoard();
 void displayHand();
+
+void drawCard(char** playerHand);
 
 char* concatCharPnt(int argc, char* argv, ...);
 
