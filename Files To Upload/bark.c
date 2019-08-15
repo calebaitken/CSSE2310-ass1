@@ -206,9 +206,9 @@ int saveGame() {
 }
 
 int loadDeck(char* deckfile) {
-    g_deckfile = fopen(deckfile, "r+");
+    g_deckfile = fopen(deckfile, "r");
     if(g_deckfile == NULL) {
-        g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
+        g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r");
         if (g_deckfile == NULL) {
             fprintf(stderr, ERR3_MSG);
             exit(3);
@@ -367,6 +367,6 @@ void deallocateAll() {
     free(g_deck);
     free(g_p1Hand);
     free(g_p2Hand);
-    fclose(g_gamefile);
-    fclose(g_deckfile);
+    //fclose(g_gamefile);
+    //fclose(g_deckfile);
 }

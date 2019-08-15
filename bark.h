@@ -30,7 +30,7 @@ int main(int argc, char** argv);
 int loadGame(char* savefile, char* p1type, char* p2type);
 int newGame(char* deckfile, int width, int height, char* p1type, char* p2type);
 int saveGame();
-int loadDeck(char* deckfile);
+void loadDeck(char* deckfile);
 
 void displayBoard();
 void displayHand(char** playerHand);

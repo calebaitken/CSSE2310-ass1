@@ -205,10 +205,15 @@ int saveGame() {
     return 0;
 }
 
-int loadDeck(char* deckfile) {
-    g_deckfile = fopen(deckfile, "r+");
+/**
+ * Loads cards from deckfile into player's hand
+ *
+ * @param deckfile  file to load from
+ */
+void loadDeck(char* deckfile) {
+    g_deckfile = fopen(deckfile, "r");
     if(g_deckfile == NULL) {
-        g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r+");
+        g_deckfile = fopen(concatCharPnt(3, getcwd(g_charBuffer, sizeof(g_charBuffer)), "/", deckfile), "r");
         if (g_deckfile == NULL) {
             fprintf(stderr, ERR3_MSG);
             exit(3);
@@ -223,8 +228,6 @@ int loadDeck(char* deckfile) {
     for (i = 0; i < cards; i++) {
         fscanf(g_deckfile, "%s", g_deck[i]);
     }
-
-    return 0;
 }
 
 /**
@@ -254,11 +257,24 @@ void displayHand(char** playerHand) {
 
 /**
  * Appends the next card in the deck to the last slot of the player's hand
+ * Function also pushes all the player's cards up their hand
  *
  * @param playerHand    player to give card to
  */
 void drawCard(char** playerHand) {
+    int i, j;
+
+    // slides cards to the start of the array
+    for (i = (MAX_CARDS_IN_HAND-1); i >= 0; i--) {
+        if (playerHand[i] == NULL) {
+            for (j = i; j < (MAX_CARDS_IN_HAND-1); j++) {
+                playerHand[j] = playerHand[j+1];
+            }
+        }
+    }
+
     playerHand[MAX_CARDS_IN_HAND-1] = g_deck[g_gameStatus.cardsDrawn];
+
     g_gameStatus.cardsDrawn++;
 }
 
@@ -367,6 +383,9 @@ void deallocateAll() {
     free(g_deck);
     free(g_p1Hand);
     free(g_p2Hand);
-    fclose(g_gamefile);
-    fclose(g_deckfile);
+
+    // closing files was causing a segmentation fault
+    // TODO: look into this
+    //fclose(g_gamefile);
+    //fclose(g_deckfile);
 }
