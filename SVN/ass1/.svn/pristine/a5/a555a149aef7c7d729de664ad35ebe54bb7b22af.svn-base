@@ -66,12 +66,7 @@ int main(int argc, char** argv) {
 
     displayBoard();
 
-    drawCard(g_p1Hand);
-    drawCard(g_p2Hand);
-
-    displayHand(g_p1Hand);
-
-    playTurn(g_gameStatus.playerOneType);
+    displayHand();
 
     // TODO: handle first move
 
@@ -234,22 +229,17 @@ void displayBoard() {
     int i, j;
     for (i = 0; i < g_gameStatus.height; i++) {
         for (j = 0; j < g_gameStatus.width; j++) {
-            fprintf(stdout, "%s%s", g_gameBoard[j][i], " ");
+            printf("%s%s", g_gameBoard[j][i], " ");
         }
-        fprintf(stdout, "\n");
+        printf("\n");
     }
 }
 
 /**
  * Display's the hand of the player about to make a move
  */
-void displayHand(char** playerHand) {
-    int i;
-    fprintf(stdout, "Hand(%d): ", g_gameStatus.turnStatus);
-    for (i = 0; i < MAX_CARDS_IN_HAND; i++) {
-        fprintf(stdout, "%s ", playerHand[i]);
-    }
-    fprintf(stdout, "\n");
+void displayHand() {
+
 }
 
 /**
@@ -260,19 +250,6 @@ void displayHand(char** playerHand) {
 void drawCard(char** playerHand) {
     playerHand[MAX_CARDS_IN_HAND-1] = g_deck[g_gameStatus.cardsDrawn];
     g_gameStatus.cardsDrawn++;
-}
-
-void playTurn(int playerType) {
-    int card, col, row;
-    // human turn
-    if (playerType == 0) {
-        fprintf(stdout, "Move ? ");
-        scanf("%d %d %d", &card, &col, &row);
-        fprintf(stdout, "\n%d %d %d\n", card, col, row);
-        return;
-    }
-
-    //ai version
 }
 
 /**
